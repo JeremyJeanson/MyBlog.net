@@ -3,7 +3,7 @@
 
 MyBlog is an accessible blog engine.
 It was created to have a real solution for developers that are looking for a inclusive Blog.
-This project start in january 2017. An exemple of Blog who is usung it is [BugHunter](https://www.bugshunter.net) 
+This project start in january 2017. An exemple of Blog who is using this code is [BugHunter](https://www.bugshunter.net) 
 
 It could be used to teach accessibility ;).
 
