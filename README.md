@@ -27,6 +27,19 @@ This blog engine include many features :
 - en-US and fr-FR localisation.
 - ... and so many more to document ...
 
+# Tech skills and libraries used
+- .net 4.7
+- ASP .net MVC 5.
+- Azure SQL.
+- Azure Blob.
+- Entity Framework 6.
+- Owin.
+- XML RPC .net.
+- SASS.
+- Bootstrap 4 (SASS version).
+- Font Awesome (for icons).
+- Highlight.js (to render code in blog posts).
+
 # Getting Started
 ## 1. Software requierments.
 
@@ -45,14 +58,22 @@ Deploiment requirements :
 ## 2. Installation process
 To use this code follow this steps :
 - Clone this reposotory.
-- Cutomize the configuration file (many settings are available in this `appSettings` section)
-- Cutomize the layou file (many settings are available in this `_Layout.cshtml` section)
+- Customize the configuration file (many settings are available in this `appSettings` section)
+- Customize the layout file (many settings are available in this `_Layout.cshtml` section)
+- Customize the CSS (`bundle-layout.scss` file contain colors used by bootstrap 4 theme)
 - Run and enjoy ;)
 
 ## 3. User creation and credentials
 The user/credentials (login and password) is created when you configure your blog in Open Live Writer. The login and password passed will set the first user.
 
 If you want to change or delete those credentials. Juste remote it from the `Publisher` table of your database. Edit your Open Live Writer account and it will create a new credential.
+
+## 4. Blog post edition tips
+If you are writing a long post, it can be split in two parts (with a link at the end of the first part "read more"). The choice to split this post isn't made by the blog engine. it is your choice.
+
+To split a post in two part, you have to edit the HTML of the post. First part should be inside `<summary></summary>`. The second part should be behind the `</summary>`.
+
+Easy no?
 
 # Contribute
 Contributions are open. Juste send your ideas or Pull Request ;)
