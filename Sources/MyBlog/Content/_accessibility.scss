@@ -1,0 +1,19 @@
+﻿#skiptocontent a {
+    position: absolute;
+    z-index: 999999999;
+    top: -50px;
+    left: 0;
+    transition: top 1s ease-out, background 1s linear;
+    padding: 10px;
+    color: white;
+    border: 1px solid white;
+    border-bottom-right-radius: 6px;
+
+    &:focus {
+        top: 0;
+        transition: top .1s ease-in, background .5s linear;
+        background: red;
+        outline: 0;
+        text-decoration: none;
+    }
+}

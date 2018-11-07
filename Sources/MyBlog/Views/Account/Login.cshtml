@@ -1,0 +1,8 @@
+﻿@model MyBlog.Models.AccountProviders
+@{ 
+    ViewBag.Title = Resources.LogInOrSignUp;
+}
+@using (Html.BeginPanel(Resources.LogInOrSignUp))
+{
+    Html.RenderPartial("_Login", Model);
+}

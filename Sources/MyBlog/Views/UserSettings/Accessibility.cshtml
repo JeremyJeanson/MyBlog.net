@@ -1,0 +1,8 @@
+﻿@model MyBlog.Models.AccessibilitySettings
+@{
+    ViewBag.Title = Resources.AccessibilityFullTitle;
+}
+@using (Html.BeginPanel(Resources.AccessibilityFullTitle))
+{
+    Html.RenderPartial("_Accessibility", Model);
+}

@@ -1,0 +1,100 @@
+﻿@model MyBlog.Models.Details
+@{
+    ViewBag.Title = WebUtility.HtmlDecode(Model.Post?.Title);
+    ViewBag.Description = Model.Description;
+    String dateJson = Newtonsoft.Json.JsonConvert.ToString(Model.Post.DateCreatedGmt);
+}
+@section head{
+    @Styles.Render("~/Content/Post")
+}
+@section scripts{
+    <script src="@Scripts.Url("~/Scripts/Post")" async></script>
+    <script src="@Scripts.Url("~/Scripts/Post-Details")" async></script>
+}
+@section ldjson{
+    <script type="application/ld+json">
+        {
+        "@@context": "http://schema.org",
+        "@@type": "NewsArticle",
+        "mainEntityOfPage": {
+        "@@type": "WebPage",
+        "@@id": "@Model.Post.Url"
+        },
+        "headline": "@Model.Post.Title",
+        "image": [
+        "@Settings.Current.Url/Content/Images/me.png"
+        ],
+        "datePublished": @Html.Raw(dateJson),
+        "dateModified": @Html.Raw(dateJson),
+        "author": {
+        "@@type": "Person",
+        "name": "@Settings.Current.AuthorName"
+        },
+        "publisher": {
+        "@@type": "Organization",
+        "name": "@Settings.Current.Title",
+        "logo": {
+        "@@type": "ImageObject",
+        "url": "@Settings.Current.Url/Content/Images/logo.png"
+        }
+        },
+        "description":"@Model.Description"
+        }
+    </script>
+}
+@Html.Partial("_Post", Model.Post)
+<nav aria-label="pages">
+    <div class="btn-group d-flex flex-column flex-md-row" role="group">
+        @if (Model.PreviousPost != null)
+        {
+            <a class="btn btn-outline-primary flex-fill mb-4" href="@Model.PreviousPost.Url"><span aria-hidden="true">&larr;</span> @Html.Raw(Model.PreviousPost.Title)</a>
+        }
+        @if (Model.NextPost != null)
+        {
+            <a class="btn btn-outline-primary flex-fill mb-4" href="@Model.NextPost.Url">@Html.Raw(Model.NextPost.Title) <span aria-hidden="true">&rarr;</span></a>
+        }
+    </div>
+</nav>
+@using (Html.BeginPanel("<i class='fas fa-comments' aria-hidden='true'></i> " + Resources.Comments))
+{
+    if (Model.Post.CommentsCount > 0)
+    {
+        <div class="detailscomments">
+            @foreach (var comment in Model.Post.Comments)
+            {
+                <div class="list-group-item">
+                    <h4>
+                        <span><i></i>@comment.Author</span> <small>@comment.DateCreatedGmt.ToShortDateString()</small>
+                    </h4>
+                    <div>@Html.Raw(comment.Html)</div>
+                </div>
+            }
+        </div>
+    }
+    <div>
+        @if (Model.Comment == null)
+        {
+            <p>@Resources.LogInPriorToComment</p>
+            <button class="btn btn-primary login pull-right"><i class="fa fa-sign-in-alt"></i> @Resources.LogInOrSignUp</button>
+        }
+        else
+        {
+            <div class="form-check mb-3">
+                @Html.EditorFor(c => c.CurrentUserSubscibed, new { htmlAttributes = new { @class = "form-check-input" } })
+                @Html.LabelFor(c => c.CurrentUserSubscibed, new { @class = "form-check-label" })
+            </div>
+            using (Html.BeginForm("Comment", "Post"))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    @Html.HiddenFor(model => model.Post.Id)
+                    @Html.EditorFor(model => model.Comment.Text, new { htmlAttributes = new { @class = "form-control", @rows = 10, placeholder = Resources.EnterComment } })
+                    @Html.ValidationMessageFor(model => model.Comment.Text, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="@Resources.Send" class="btn btn-primary pull-right" />
+                </div>
+            }
+        }
+    </div>
+}

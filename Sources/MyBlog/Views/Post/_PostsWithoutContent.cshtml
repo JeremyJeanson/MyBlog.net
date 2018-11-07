@@ -1,0 +1,25 @@
+﻿@model MyBlog.Engine.Data.Models.PostWithoutContent[]
+@foreach (var item in Model)
+{
+    <article class="list-group-item">
+        <h3><a href="@item.Url">@Html.Raw(item.Title)</a></h3>
+        <div class="info">
+            <div>
+                <div class="date">
+                    <i></i>
+                    @item.DateCreatedGmt.ToShortDateString()
+                </div>
+                @if (item.Categories?.Any() ?? false)
+                {
+                    <div class="categories">
+                        <i></i>
+                        @foreach (var category in item.Categories)
+                        {
+                            @Html.ActionLink(category.Name, "Category", new { Id = category.Id });
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </article>
+}

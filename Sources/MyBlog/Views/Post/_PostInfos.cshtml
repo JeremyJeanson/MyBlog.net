@@ -1,0 +1,24 @@
+﻿@model MyBlog.Engine.Data.Models.PostDesplayedBase
+<div class="info">
+    <div>
+        <div class="date">
+            <i></i>
+            @Model.DateCreatedGmt.ToShortDateString()
+        </div>
+        <div class="comments">
+            <i></i>
+            @(Model.CommentsCount == 0 ? Resources.NoComments : Model.CommentsCount + " " + Resources.NComments)
+        </div>
+        @if (Model.Categories.Any())
+        {
+            <div class="categories">
+                <i></i>
+                @foreach (var category in Model.Categories)
+                {
+                    @Html.ActionLink(category.Name, "Category", new { Id = category.Id });
+                }
+            </div>
+        }
+    </div>
+    <div class="share">@Html.Socials(Model.Id, Model.Title, Model.Url)</div>
+</div>

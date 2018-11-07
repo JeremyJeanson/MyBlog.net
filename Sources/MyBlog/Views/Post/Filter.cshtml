@@ -1,0 +1,22 @@
+﻿@model MyBlog.Models.PostsFilter
+@{
+    ViewBag.Title = WebUtility.HtmlDecode(Model.Title + " - " + Model.SubTitle);
+    ViewBag.Description = WebUtility.HtmlDecode(Model.Description);
+}
+@using (Html.BeginPanel())
+{
+    <div class="page-header">
+        <h2>@Model.Title <small>@Model.SubTitle</small></h2>
+    </div>
+    <div id="items" class="list-group list-group-flush">
+        @Html.Partial("_PostsWithoutContent", Model.Items)
+    </div>
+    <div class="indexednavigation">
+        @if (Model.HaveMoreResults)
+        {
+            <button type="button" id="btn-getmore" class="btn btn-primary" data-action="@Model.Action" data-args="@Model.Id?page=@Model.NextPage">@Resources.GetMorePost</button>
+        }
+
+        @Html.Pagination(Model.Action, Model.Available, Model.Page, Settings.Current.PostQuantityPerSearch, new { Id = Model.Id })
+    </div>
+}

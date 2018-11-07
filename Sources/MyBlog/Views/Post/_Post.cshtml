@@ -1,0 +1,10 @@
+﻿@model MyBlog.Engine.Data.Models.PostWithDetails
+@using (Html.BeginArticle(Model.Title))
+{
+    @Html.Partial("_PostInfos", Model)
+    <div class="content">@Html.Raw(Model.HtmlFull)</div>
+    <div class="author">
+        <i></i>
+        @Settings.Current.AuthorName
+    </div>
+}

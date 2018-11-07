@@ -1,0 +1,51 @@
+﻿@model MyBlog.Models.Mail
+@{ 
+    ViewBag.Title = Resources.Mail;
+    ViewBag.Description = String.Format(Resources.ContactDescription, Settings.Current.AuthorName);
+}
+@using (Html.BeginPanel("<i class='fa fa-envelope' ></i> " + @Resources.Mail))
+{
+    using (Html.BeginForm())
+    {
+    @Html.AntiForgeryToken()    
+    <div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group row">
+            @Html.LabelFor(model => model.SenderName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SenderName, new { htmlAttributes = new { @class = "form-control", placeholder = Resources.EnterName } })
+                @Html.ValidationMessageFor(model => model.SenderName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.SenderMail, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SenderMail, new { htmlAttributes = new { @class = "form-control", placeholder = Resources.EnterEmail } })
+                @Html.ValidationMessageFor(model => model.SenderMail, "", new { @class = "text-danger"})
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Subject, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @class = "form-control", placeholder = Resources.EnterSubject } })
+                @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">            
+            <div class="offset-md-2 col-md-10">
+                @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control", @rows = 10, placeholder = Resources.EnterMessage } })
+                @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="offset-md-2 col-md-10">
+                <input type="submit" value="@Resources.Send" class="btn btn-primary pull-right" />
+            </div>
+        </div>
+    </div>
+    }
+}

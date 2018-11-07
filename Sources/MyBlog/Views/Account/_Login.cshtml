@@ -1,0 +1,14 @@
+﻿@model MyBlog.Models.AccountProviders
+@using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = Model.ReturnUrl }))
+{
+    <div>
+        <p>
+            @foreach (var p in Model.Providers)
+            {
+                <button type="submit" class="btn btn-block btn-social btn-@p.Style" name="provider" value="@p.Provider">
+                    <i class="fab fa-@p.Icon"></i> Log in using your @p.Name account
+                </button>
+            }
+        </p>
+    </div>
+}

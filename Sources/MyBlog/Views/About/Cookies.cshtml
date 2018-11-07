@@ -1,0 +1,8 @@
+﻿@{
+    ViewBag.Title = Resources.CookiesPolityTitle;
+    ViewBag.Description = Resources.CookiesPolityDescription;
+}
+@using (Html.BeginPanel("<i class='fas fa-cookie-bite' aria-hidden='true'></i> " + Resources.CookiesPolityTitle))
+{
+    @Html.Raw(Resources.CookiesPolityContent)
+}

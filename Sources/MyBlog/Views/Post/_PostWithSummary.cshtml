@@ -1,0 +1,18 @@
+﻿@model MyBlog.Engine.Data.Models.PostWithSummary
+@using (Html.BeginArticle(Model.Title, Model.Url))
+{
+    @Html.Partial("_PostInfos", Model)
+    <div class="content">
+        @Html.Raw(Model.HtmlSummary)
+    </div>
+    <div>
+        @if (Model.ContentIsSplitted)
+        {
+        <a class="btn btn-primary" href="@Model.Url">@Resources.ReadMore <span class="sr-only"> @Resources.ReadMoreAboutSuffix</span>&rarr;</a>
+        }
+        <div class="author">
+            <i></i>
+            @Settings.Current.AuthorName
+        </div>
+    </div>
+}

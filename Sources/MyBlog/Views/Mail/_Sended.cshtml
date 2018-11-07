@@ -1,0 +1,6 @@
+﻿@using (Html.BeginPanel("<i class='fa fa-envelope'></i> " + @Resources.Mail))
+{
+    <div class="alert alert-success">
+        @Html.Raw(Resources.MailSended)
+    </div>
+}

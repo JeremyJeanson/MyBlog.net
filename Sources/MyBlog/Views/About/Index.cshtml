@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = Resources.About;
+    ViewBag.Description = String.Format(Resources.AboutDescription, Settings.Current.AuthorName);
+}
+@using (Html.BeginPanel("<i class='fas fa-info' aria-hidden='true'></i> " + Resources.About))
+{
+    <div id="about">
+        <img alt="Your name" src="~/Content/Images/about.jpg">
+        <p>...</p>
+        <div class=" pull-right">
+            <a class="btn btn-block btn-social btn-twitter" title="Twitter ..." href="https://twitter.com/[YourName]" target="_blank"><i class="fab fa-twitter"></i>@@YourName</a>
+        </div>
+    </div>
+}

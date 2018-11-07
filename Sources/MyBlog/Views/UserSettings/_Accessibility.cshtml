@@ -1,0 +1,10 @@
+﻿@model MyBlog.Models.AccessibilitySettings
+<div class="form">
+    <div class="form-group">
+        <label for="fontOptions" class="col-sm-12">@Resources.AccessibilitySettingsFontTitle</label>
+        <div id="fontOptions" class="btn-group-vertical d-flex" role="group">
+            <button type="button" class="btn @(Model.UseDyslexicFont?"btn-outline-primary":"btn-primary")" role="button" id="AccessibilitySettingsFontUseDefault" onclick="$.accessibility.SetDefaultFont()">@Resources.AccessibilitySettingsFontUseDefault</button>
+            <button type="button" href="#" class="btn @(Model.UseDyslexicFont?"btn-primary":"btn-outline-primary")" role="button" id="AccessibilitySettingsFontUseDylexia" onclick="$.accessibility.SetDysFont()">@Resources.AccessibilitySettingsFontUseDylexia</button>
+        </div>
+    </div>
+</div>

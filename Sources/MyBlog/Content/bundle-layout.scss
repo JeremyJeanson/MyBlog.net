@@ -1,0 +1,64 @@
+﻿// Theme
+$blue: #337ab7;
+$dark: #222;
+$enable-shadows: true;
+$body-bg: #f0f0f0;
+$container-max-widths: ( 
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1140px );
+$grid-gutter-width: 10px ;
+$white: #fff;
+$black: #000 ;
+$navbar-dark-color: $white;
+$navbar-dark-hover-color: $white;
+$navbar-light-color: rgba($black, .9);
+$navbar-light-hover-color: rgba($black, 1);
+
+// Bootstrap
+@import "bootstrap/functions";
+@import "bootstrap/_variables";
+//@import "_variables";
+@import "bootstrap/mixins";
+@import "bootstrap/root";
+@import "bootstrap/reboot";
+@import "bootstrap/type";
+@import "bootstrap/images";
+@import "bootstrap/code";
+@import "bootstrap/grid";
+//@import "bootstrap/tables";
+@import "bootstrap/forms";
+@import "bootstrap/buttons";
+@import "bootstrap/transitions";
+@import "bootstrap/dropdown";
+@import "bootstrap/button-group";
+@import "bootstrap/input-group";
+@import "bootstrap/custom-forms";
+@import "bootstrap/nav";
+@import "bootstrap/navbar";
+@import "bootstrap/card";
+//@import "bootstrap/breadcrumb";
+@import "bootstrap/pagination";
+@import "bootstrap/badge";
+//@import "bootstrap/jumbotron";
+@import "bootstrap/alert";
+//@import "bootstrap/progress";
+//@import "bootstrap/media";
+@import "bootstrap/list-group";
+@import "bootstrap/close";
+@import "bootstrap/modal";
+//@import "bootstrap/tooltip";
+//@import "bootstrap/popover";
+//@import "bootstrap/carousel";
+@import "bootstrap/utilities";
+//@import "bootstrap/print";
+@import "fontawesome/solid";
+@import "fontawesome/regular";
+@import "fontawesome/brands";
+@import "fontawesome/fontawesome";
+@import "bootstrap-social/bootstrap-social";
+//@import "awesome-bootstrap-checkbox/awesome-bootstrap-checkbox";
+@import "_accessibility";
+@import "_layout";
+@import "_posts";

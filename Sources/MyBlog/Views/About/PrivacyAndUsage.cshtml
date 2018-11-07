@@ -1,0 +1,12 @@
+﻿@{ 
+    ViewBag.Title = Resources.PrivacyPolicy;
+    ViewBag.Description = Resources.PrivacyPolicyDescription;
+}
+@using (Html.BeginPanel("<i class='fa fa-user-secret' aria-hidden='true'></i> " + Resources.PrivacyPolicy))
+{
+    @Html.Raw(Resources.PrivacyPolicyContent)
+}
+@*@using (Html.BeginPanel(Resources.TermsOfService))
+{
+    @Html.Raw(Resources.TermsOfServiceContent)
+}*@

@@ -1,0 +1,18 @@
+﻿[
+  {
+    "outputFile": "Content/social-login.css",
+    "inputFile": "Content/social-login.scss"
+  },
+  {
+    "outputFile": "Content/bundle-default.css",
+    "inputFile": "Content/bundle-default.scss"
+  },
+  {
+    "outputFile": "Content/bundle-dys.css",
+    "inputFile": "Content/bundle-dys.scss"
+  },
+  {
+    "outputFile": "Content/bundle-layout.css",
+    "inputFile": "Content/bundle-layout.scss"
+  }
+]

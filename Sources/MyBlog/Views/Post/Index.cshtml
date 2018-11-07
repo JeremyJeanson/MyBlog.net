@@ -1,0 +1,48 @@
+﻿@model MyBlog.Models.Posts
+@{
+    if (Model.Page > 0)
+    {
+        ViewBag.Title = Settings.Current.Title + " - Page " + Model.Page;
+    }
+}
+@section head{
+    @Styles.Render("~/Content/Post")
+}
+@section scripts{
+    <script src="@Scripts.Url("~/Scripts/Post")" async></script>
+}
+@section ldjson{
+    @Html.Partial("_OrganisationLdJson")
+    <script type="application/ld+json">
+        {
+        "@@context": "http://schema.org",
+        "@@type": "ItemList",
+        "itemListElement": [
+        @{
+            Int32 position = 0;
+            foreach (var post in Model.Items)
+            {
+                position++;
+                if (position != 1)
+                {
+                    <text>,</text>
+                }
+                <text>{"@@type": "ListItem","position": "@position","url":"@post.Url"}</text>
+            }
+        }
+        ]}
+    </script>
+}
+<div id="items">
+    @foreach (var item in Model.Items)
+    {
+        @Html.Partial("_PostWithSummary", item)
+    }
+</div>
+<div class="indexednavigation">
+    @if (Model.HaveMoreResults)
+    {
+        <button type="button" id="btn-getmore" class="btn btn-primary" data-action="Index" data-args="?page=@Model.NextPage">@Resources.GetMorePost</button>
+    }
+    @Html.Pagination("Index", Model.Available, Model.Page, Settings.Current.PostQuantityPerPage)
+</div>
