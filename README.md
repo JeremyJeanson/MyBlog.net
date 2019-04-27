@@ -7,6 +7,9 @@ This project start in january 2017. An exemple of Blog who is using this code is
 
 It could be used to teach accessibility ;).
 
+# Version
+This repository contain the .net Framework version of the blog engine. The .net core version is available [here](https://github.com/JeremyJeanson/MyBlog.netcore).
+
 # Features
 This blog engine include many features :
 - Open Live Writer (it is the only way to manage blog's content). No security issues due to admin apges or something else.
@@ -58,8 +61,8 @@ Deploiment requirements :
 ## 2. Installation process
 To use this code follow this steps :
 - Clone this reposotory.
-- Customize the configuration file (many settings are available in this `appSettings` section)
-- Customize the layout file (many settings are available in this `_Layout.cshtml` section)
+- Customize the configuration file (many settings are available in the `appSettings` section)
+- Customize the layout file (`_Layout.cshtml` view available in Shared folder)
 - Customize the CSS (`bundle-layout.scss` file contain colors used by bootstrap 4 theme)
 - Run and enjoy ;)
 
